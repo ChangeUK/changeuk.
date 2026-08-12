@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Control Room</title><link rel="stylesheet" href="styles.css"></head>
+<body class="admin-body">
+
+<div id="code-view" class="login-shell">
+  <div class="login-card">
+    <div class="admin-mark">CU</div>
+    <div class="eyebrow">PRIVATE CONTROL ROOM</div>
+    <h1>Access required</h1>
+    <p>This page is not linked anywhere on the public site.</p>
+    <form id="code-form">
+      <label>Access code<input id="access-code" type="password" autocomplete="off" required></label>
+      <button class="button full" type="submit">Continue</button>
+      <p id="code-msg" class="form-msg"></p>
+    </form>
+  </div>
+</div>
+
+<div id="login-view" class="login-shell hidden">
+  <div class="login-card">
+    <div class="admin-mark">CU</div>
+    <div class="eyebrow">SECURE ADMIN LOGIN</div>
+    <h1>Sign in</h1>
+    <p>Use an authorised Supabase administrator account.</p>
+    <form id="login-form">
+      <label>Email<input id="login-email" type="email" required></label>
+      <label>Password<input id="login-password" type="password" required></label>
+      <button class="button full" type="submit">Sign in</button>
+      <p id="login-msg" class="form-msg"></p>
+    </form>
+    <a class="text-link" href="index.html">← Return to website</a>
+  </div>
+</div>
+
+<div id="admin-view" class="admin-shell hidden">
+  <aside class="sidebar">
+    <div class="admin-brand"><div class="admin-mark small">CU</div><strong>Control Room</strong></div>
+    <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="people">People</button>
+    <button class="tab" data-tab="policies">Policies</button>
+    <button class="tab" data-tab="news">News</button>
+    <button class="tab" data-tab="stats">Statistics</button>
+    <button id="logout-btn" class="tab danger">Sign out</button>
+  </aside>
+
+  <main class="admin-main">
+    <section id="dashboard" class="admin-panel active">
+      <div class="admin-title"><div><div class="eyebrow">CONTROL ROOM</div><h1>Dashboard</h1></div><a class="button ghost dark" href="index.html" target="_blank">View website ↗</a></div>
+      <div class="dashboard-cards">
+        <article><span>MPs</span><strong id="dash-mps">0</strong></article>
+        <article><span>Councillors</span><strong id="dash-councillors">0</strong></article>
+        <article><span>Helpers</span><strong id="dash-helpers">0</strong></article>
+        <article><span>Members</span><strong id="dash-members">0</strong></article>
+      </div>
+      <div class="admin-card">
+        <h2>Quick actions</h2>
+        <div class="quick-actions">
+          <button class="button" data-jump="people">Add person</button>
+          <button class="button ghost dark" data-jump="policies">Add policy</button>
+          <button class="button ghost dark" data-jump="news">Publish news</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="people" class="admin-panel">
+      <div class="admin-title"><div><div class="eyebrow">PEOPLE</div><h1>MPs, councillors & helpers</h1></div></div>
+      <div class="admin-card">
+        <form id="person-form" class="form-grid">
+          <input id="person-id" type="hidden">
+          <label>Name<input id="person-name" required></label>
+          <label>Role<select id="person-role"><option value="mp">MP</option><option value="councillor">Councillor</option><option value="helper">Helper</option></select></label>
+          <label>Constituency / Ward<input id="person-area"></label>
+          <label>Job title<input id="person-title"></label>
+          <label class="wide">Bio<textarea id="person-bio" rows="4"></textarea></label>
+          <label class="wide">Photo<input id="person-file" type="file" accept="image/*"></label>
+          <button class="button" type="submit">Save person</button>
+          <button id="person-cancel" class="button ghost dark" type="button">Clear</button>
+          <p id="person-msg" class="form-msg wide"></p>
+        </form>
+      </div>
+      <div class="admin-card"><h2>Current people</h2><div id="admin-people-list" class="admin-list"></div></div>
+    </section>
+
+    <section id="policies" class="admin-panel">
+      <div class="admin-title"><div><div class="eyebrow">POLICIES</div><h1>Policy manager</h1></div></div>
+      <div class="admin-card">
+        <form id="policy-form" class="form-grid">
+          <input id="policy-id" type="hidden">
+          <label>Policy title<input id="policy-title" required></label>
+          <label>Category<input id="policy-category" placeholder="Economy" required></label>
+          <label>Icon / symbol<input id="policy-icon" maxlength="4" value="●"></label>
+          <label>Sort order<input id="policy-order" type="number" value="0"></label>
+          <label class="wide">Short summary<textarea id="policy-summary" rows="3" required></textarea></label>
+          <label class="wide">Bullet points <small>one per line</small><textarea id="policy-bullets" rows="5"></textarea></label>
+          <label class="wide">Full details<textarea id="policy-detail" rows="6"></textarea></label>
+          <label class="checkbox-row"><input id="policy-published" type="checkbox" checked> Published</label>
+          <button class="button" type="submit">Save policy</button>
+          <button id="policy-cancel" class="button ghost dark" type="button">Clear</button>
+          <p id="policy-msg" class="form-msg wide"></p>
+        </form>
+      </div>
+      <div class="admin-card"><h2>Current policies</h2><div id="admin-policy-list" class="admin-list"></div></div>
+    </section>
+
+    <section id="news" class="admin-panel">
+      <div class="admin-title"><div><div class="eyebrow">NEWS</div><h1>News manager</h1></div></div>
+      <div class="admin-card">
+        <form id="news-form" class="form-grid">
+          <input id="news-id" type="hidden">
+          <label class="wide">Headline<input id="news-title" required></label>
+          <label>Category<input id="news-category" value="PARTY NEWS"></label>
+          <label>Image<input id="news-file" type="file" accept="image/*"></label>
+          <label class="wide">Summary<textarea id="news-summary" rows="4" required></textarea></label>
+          <label class="wide">Article body<textarea id="news-body" rows="7"></textarea></label>
+          <label class="checkbox-row"><input id="news-published" type="checkbox" checked> Published</label>
+          <button class="button" type="submit">Save story</button>
+          <button id="news-cancel" class="button ghost dark" type="button">Clear</button>
+          <p id="news-msg" class="form-msg wide"></p>
+        </form>
+      </div>
+      <div class="admin-card"><h2>Stories</h2><div id="admin-news-list" class="admin-list"></div></div>
+    </section>
+
+    <section id="stats" class="admin-panel">
+      <div class="admin-title"><div><div class="eyebrow">STATISTICS</div><h1>Homepage figures</h1></div></div>
+      <div class="admin-card">
+        <form id="stats-form" class="form-grid">
+          <label>MPs<input id="edit-mps" type="number" min="0"></label>
+          <label>Councillors<input id="edit-councillors" type="number" min="0"></label>
+          <label>Helpers<input id="edit-helpers" type="number" min="0"></label>
+          <label>Members<input id="edit-members" type="number" min="0"></label>
+          <button class="button" type="submit">Save figures</button>
+          <p id="stats-msg" class="form-msg"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>window.CHANGEUK_ACCESS_HASH="d3cd04323523c69555c97f076e1295c0838c2300aefd1c8c1732235ec0d89658";</script>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin.js"></script>
+</body>
+</html>

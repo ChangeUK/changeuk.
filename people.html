@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Our People — Change UK</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html"><img src="change-uk-logo.png" alt="Change UK"></a>
+  <button class="nav-toggle" aria-label="Open menu">☰</button>
+  <nav><a href="index.html">Home</a><a href="#mps">MPs</a><a href="#councillors">Councillors</a><a href="#helpers">Helpers</a><button id="theme-toggle" class="theme-toggle">◐</button></nav>
+</header>
+<main>
+<section class="page-hero"><div class="eyebrow">OUR PEOPLE</div><h1 class="gradient-title">Representing change.</h1><p>Meet the MPs, councillors and campaign helpers working with Change UK.</p></section>
+<section id="mps" class="section"><div class="section-heading"><div><div class="eyebrow">PARLIAMENT</div><h2>Change MPs</h2></div></div><div id="mp-grid" class="people-grid"></div></section>
+<section id="councillors" class="section alt"><div class="section-heading"><div><div class="eyebrow">LOCAL GOVERNMENT</div><h2>Change Councillors</h2></div></div><div id="councillor-grid" class="people-grid"></div></section>
+<section id="helpers" class="section"><div class="section-heading"><div><div class="eyebrow">CAMPAIGN</div><h2>Helpers</h2></div></div><div id="helper-grid" class="people-grid"></div></section>
+</main>
+<footer><div class="brand footer-brand"><img src="change-uk-logo.png" alt="Change UK"></div><p>© <span id="year"></span> Change UK</p></footer>
+<button id="back-to-top" class="back-to-top">↑</button>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="site.js"></script>
+</body></html>
