@@ -2,6 +2,6 @@
 // Paste your Project URL and anon/publishable key here.
 // NEVER put your service_role key in this file.
 window.CHANGE_UK_CONFIG = {
-  SUPABASE_URL: "PASTE_YOUR_SUPABASE_URL_HERE",
-  SUPABASE_ANON_KEY: "PASTE_YOUR_SUPABASE_ANON_KEY_HERE"
+  SUPABASE_URL: "https://xbgqzayavboypwatpjdi.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_fvkVc5RE4Uyg-_qXESuWCg_uf7e9rTG"
 };
